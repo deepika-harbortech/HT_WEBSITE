@@ -9,14 +9,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --navy-deep:#0F2438;
-    --navy-mid:#1C3D5A;
-    --steel:#5B6B75;
-    --paper:#F5F6F4;
-    --paper-line:#DADFDB;
+    --navy-deep:#0A5478;
+    --navy-mid:#1878A3;
+    --steel:#4F6B78;
+    --paper:#FFFFFF;
+    --paper-line:#D7E4EA;
     --ink:#10151A;
-    --signal:#FF6A2B;
-    --signal-dark:#D8541A;
+    --signal:#FFFFFF;
+    --signal-dark:#E7F3F8;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -56,14 +56,17 @@
     justify-content:space-between;
   }
   .logo{
-    color:#fff;
-    font-family:'Space Grotesk', sans-serif;
-    font-weight:700;
-    font-size:20px;
-    letter-spacing:0.01em;
+    display:flex;
+    align-items:center;
     text-decoration:none;
   }
-  .logo span{ color:var(--signal); }
+  .logo img{
+    height:34px;
+    display:block;
+    background:#fff;
+    padding:6px 10px;
+    border-radius:4px;
+  }
   nav .nav-links{
     display:flex;
     gap:28px;
@@ -111,7 +114,7 @@
   }
   .btn-signal{
     background:var(--signal);
-    color:#161005;
+    color:var(--navy-deep);
     text-decoration:none;
     padding:14px 26px;
     font-weight:600;
@@ -226,7 +229,7 @@
     top:9px;
     width:7px;
     height:1px;
-    background:var(--signal);
+    background:var(--navy-mid);
   }
 
   /* WHY */
@@ -309,7 +312,7 @@
 
 <nav>
   <div class="wrap">
-    <a href="#" class="logo">Harbor<span>Tech</span></a>
+    <a href="#" class="logo"><img src="images/logo.png" alt="Harbor Tech logo"></a>
     <div class="nav-links">
       <a href="#solutions">Solutions</a>
       <a href="#why">Why Harbor Tech</a>
@@ -427,7 +430,7 @@
 <footer>
   <div class="wrap">
     <div>
-      <a href="#" class="logo" style="font-size:18px;">Harbor<span style="color:var(--signal);">Tech</span></a>
+      <a href="#" class="logo" style="height:26px;"><img src="images/logo.png" alt="Harbor Tech logo" style="height:26px;"></a>
     </div>
     <div class="foot-cols">
       <div>
