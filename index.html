@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harbor Tech — Ports & Terminals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-deep:#0F2438;
+    --navy-mid:#1C3D5A;
+    --steel:#5B6B75;
+    --paper:#F5F6F4;
+    --paper-line:#DADFDB;
+    --ink:#10151A;
+    --signal:#FF6A2B;
+    --signal-dark:#D8541A;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'IBM Plex Sans', sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.55;
+  }
+  h1,h2,h3,.display{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    line-height:1.1;
+    margin:0;
+  }
+  a{color:inherit;}
+  .wrap{
+    max-width:1100px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+  .rule{
+    border:none;
+    border-top:1px solid var(--paper-line);
+    margin:0;
+  }
+
+  /* NAV */
+  nav{
+    background:var(--navy-deep);
+    padding:22px 0;
+  }
+  nav .wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .logo{
+    color:#fff;
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    font-size:20px;
+    letter-spacing:0.01em;
+    text-decoration:none;
+  }
+  .logo span{ color:var(--signal); }
+  nav .nav-links{
+    display:flex;
+    gap:28px;
+    align-items:center;
+  }
+  nav .nav-links a{
+    color:#CBD6DE;
+    text-decoration:none;
+    font-size:15px;
+  }
+  nav .nav-links a.cta{
+    color:#fff;
+    border:1px solid rgba(255,255,255,0.35);
+    padding:8px 16px;
+    font-size:14px;
+  }
+  nav .nav-links a.cta:hover{ border-color:var(--signal); color:var(--signal);}
+
+  /* HERO */
+  header.hero{
+    background:var(--navy-deep);
+    color:#fff;
+    padding:88px 0 0;
+  }
+  .hero .wrap{
+    display:grid;
+    gap:28px;
+  }
+  .hero h1{
+    font-size:clamp(34px, 5vw, 54px);
+    max-width:16ch;
+    color:#fff;
+  }
+  .hero p.lede{
+    font-size:19px;
+    color:#B9C6CE;
+    max-width:52ch;
+    margin:0;
+  }
+  .hero .actions{
+    display:flex;
+    gap:18px;
+    align-items:center;
+    margin-top:6px;
+  }
+  .btn-signal{
+    background:var(--signal);
+    color:#161005;
+    text-decoration:none;
+    padding:14px 26px;
+    font-weight:600;
+    font-size:15px;
+    display:inline-block;
+    transition:background 0.15s ease;
+  }
+  .btn-signal:hover{ background:var(--signal-dark); }
+  .link-quiet{
+    color:#CBD6DE;
+    text-decoration:none;
+    font-size:15px;
+    border-bottom:1px solid rgba(255,255,255,0.3);
+    padding-bottom:2px;
+  }
+
+  /* manifest strip */
+  .manifest{
+    margin-top:56px;
+    border-top:1px solid rgba(255,255,255,0.18);
+  }
+  .manifest .wrap{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    padding:0;
+  }
+  .manifest .cell{
+    padding:22px 0;
+    border-right:1px solid rgba(255,255,255,0.18);
+  }
+  .manifest .cell:last-child{ border-right:none; }
+  .manifest .cell .label{
+    font-size:12px;
+    color:#7E93A0;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    font-family:'IBM Plex Sans', sans-serif;
+  }
+  .manifest .cell .value{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:17px;
+    color:#fff;
+    margin-top:6px;
+  }
+
+  /* SECTIONS */
+  section{ padding:96px 0; }
+  .section-head{
+    max-width:60ch;
+    margin-bottom:48px;
+  }
+  .section-head .kicker{
+    color:var(--steel);
+    font-size:14px;
+    margin-bottom:10px;
+    display:block;
+  }
+  .section-head h2{
+    font-size:clamp(26px, 3.4vw, 34px);
+    color:var(--navy-deep);
+  }
+  .overview p{
+    font-size:18px;
+    color:#2A343B;
+    max-width:68ch;
+  }
+
+  /* SOLUTIONS */
+  .solution{
+    padding:48px 0;
+    border-top:1px solid var(--paper-line);
+  }
+  .solution:last-of-type{ border-bottom:1px solid var(--paper-line); }
+  .solution .grid{
+    display:grid;
+    grid-template-columns:1fr 2fr;
+    gap:48px;
+    align-items:start;
+  }
+  .solution .tag{
+    font-family:'Space Grotesk', sans-serif;
+    color:var(--steel);
+    font-size:15px;
+  }
+  .solution h3{
+    font-size:26px;
+    color:var(--navy-deep);
+    margin-bottom:14px;
+  }
+  .solution p{
+    color:#2A343B;
+    max-width:56ch;
+    margin:0 0 18px;
+  }
+  .solution ul{
+    list-style:none;
+    padding:0;
+    margin:0;
+    display:grid;
+    gap:10px;
+  }
+  .solution ul li{
+    padding-left:18px;
+    position:relative;
+    color:#2A343B;
+    font-size:15px;
+  }
+  .solution ul li::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:9px;
+    width:7px;
+    height:1px;
+    background:var(--signal);
+  }
+
+  /* WHY */
+  .why-list{
+    display:grid;
+    gap:0;
+  }
+  .why-item{
+    display:grid;
+    grid-template-columns:220px 1fr;
+    gap:32px;
+    padding:26px 0;
+    border-top:1px solid var(--paper-line);
+  }
+  .why-list .why-item:last-child{ border-bottom:1px solid var(--paper-line); }
+  .why-item h3{
+    font-size:19px;
+    color:var(--navy-deep);
+  }
+  .why-item p{
+    margin:0;
+    color:#2A343B;
+    max-width:56ch;
+  }
+
+  /* CTA BAND */
+  .cta-band{
+    background:var(--navy-mid);
+    color:#fff;
+    padding:72px 0;
+  }
+  .cta-band .wrap{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:24px;
+    flex-wrap:wrap;
+  }
+  .cta-band h2{
+    font-size:clamp(24px,3vw,30px);
+    color:#fff;
+    max-width:20ch;
+  }
+
+  /* FOOTER */
+  footer{
+    background:var(--navy-deep);
+    color:#8FA0AB;
+    padding:48px 0 32px;
+    font-size:14px;
+  }
+  footer .wrap{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:24px;
+  }
+  footer a{ color:#CBD6DE; text-decoration:none; }
+  footer .foot-cols{ display:flex; gap:56px; flex-wrap:wrap; }
+  footer .foot-cols div{ display:flex; flex-direction:column; gap:8px; }
+  footer .fine{
+    margin-top:32px;
+    padding-top:20px;
+    border-top:1px solid rgba(255,255,255,0.1);
+    font-size:13px;
+    color:#5F7280;
+  }
+
+  @media (max-width:760px){
+    .manifest .wrap{ grid-template-columns:1fr; }
+    .manifest .cell{ border-right:none; border-bottom:1px solid rgba(255,255,255,0.18); }
+    .manifest .cell:last-child{ border-bottom:none; }
+    .solution .grid{ grid-template-columns:1fr; gap:16px; }
+    .why-item{ grid-template-columns:1fr; gap:8px; }
+    nav .nav-links a:not(.cta){ display:none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#" class="logo">Harbor<span>Tech</span></a>
+    <div class="nav-links">
+      <a href="#solutions">Solutions</a>
+      <a href="#why">Why Harbor Tech</a>
+      <a href="#contact" class="cta">Talk to us</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <h1>Run your terminal on one system, not ten spreadsheets</h1>
+    <p class="lede">Harbor Tech gives Container Freight Stations and Port Community stakeholders a single, connected way to move cargo — and the paperwork behind it — through the gate.</p>
+    <div class="actions">
+      <a href="#contact" class="btn-signal">Talk to us</a>
+      <a href="#solutions" class="link-quiet">See the solutions</a>
+    </div>
+  </div>
+  <div class="manifest">
+    <div class="wrap">
+      <div class="cell">
+        <span class="label">Built for</span>
+        <div class="value">CFS Operators</div>
+      </div>
+      <div class="cell">
+        <span class="label">Also serves</span>
+        <div class="value">Port Authorities</div>
+      </div>
+      <div class="cell">
+        <span class="label">Connects</span>
+        <div class="value">Customs & Stakeholders</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="overview">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Overview</span>
+      <h2>Purpose-built for ports and terminals</h2>
+    </div>
+    <p>Container Freight Stations and Port Communities run on paperwork — gate passes, stuffing reports, customs filings, tariff sheets — spread across systems that were never built to talk to each other. Harbor Tech replaces that patchwork with software designed around how cargo, documents, and stakeholders actually move through a port.</p>
+  </div>
+</section>
+
+<section id="solutions">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Solutions</span>
+      <h2>Two systems. One connected operation.</h2>
+    </div>
+
+    <div class="solution">
+      <div class="grid">
+        <div class="tag">01 / CFS Solution</div>
+        <div>
+          <h3>Container Freight Station Solution</h3>
+          <p>Manage the full life of cargo through your CFS — from gate-in to stuffing and destuffing, storage, and billing — in one system built around how a freight station actually operates.</p>
+          <ul>
+            <li>Gate-in / gate-out tracking with real-time cargo status</li>
+            <li>Stuffing and destuffing workflows tied to storage allocation</li>
+            <li>Configurable tariffs and automated billing</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="solution">
+      <div class="grid">
+        <div class="tag">02 / Port Community System</div>
+        <div>
+          <h3>Port Community System (Maritime Single Window)</h3>
+          <p>A single electronic point of contact between shipping lines, customs, port authorities, and other stakeholders — built to meet Maritime Single Window requirements while cutting the paperwork that slows every party down.</p>
+          <ul>
+            <li>One filing point for shipping lines, customs, and agents</li>
+            <li>Standards-based electronic data exchange</li>
+            <li>Full visibility across every stakeholder in the chain</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Why Harbor Tech</span>
+      <h2>What makes it different</h2>
+    </div>
+    <div class="why-list">
+      <div class="why-item">
+        <h3>Built for cargo operations</h3>
+        <p>Not generic business software adapted to fit a port — workflows designed around gates, yards, vessels, and filings from the start.</p>
+      </div>
+      <div class="why-item">
+        <h3>One connected system</h3>
+        <p>CFS and Port Community data live in the same place, instead of being scattered across spreadsheets and standalone tools that don't talk to each other.</p>
+      </div>
+      <div class="why-item">
+        <h3>Configurable, not rigid</h3>
+        <p>Workflows that adapt to how your terminal and stakeholders already operate, rather than forcing a rebuild of your process around the software.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band" id="contact">
+  <div class="wrap">
+    <h2>Ready to see Harbor Tech on your terminal?</h2>
+    <a href="mailto:hello@harbortech.example" class="btn-signal">Talk to us</a>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <a href="#" class="logo" style="font-size:18px;">Harbor<span style="color:var(--signal);">Tech</span></a>
+    </div>
+    <div class="foot-cols">
+      <div>
+        <strong style="color:#fff; font-size:13px;">Solutions</strong>
+        <a href="#solutions">CFS Solution</a>
+        <a href="#solutions">Port Community System</a>
+      </div>
+      <div>
+        <strong style="color:#fff; font-size:13px;">Contact</strong>
+        <a href="mailto:hello@harbortech.example">hello@harbortech.example</a>
+        <a href="#">+00 000 000 0000</a>
+      </div>
+    </div>
+  </div>
+  <div class="wrap fine">
+    &copy; 2026 Harbor Tech. All rights reserved.
+  </div>
+</footer>
+
+</body>
+</html>
